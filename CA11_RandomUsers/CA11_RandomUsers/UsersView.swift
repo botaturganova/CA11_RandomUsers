@@ -8,24 +8,20 @@
 import SwiftUI
 
 struct UsersView: View {
-@StateObject var userData = UserData()
+  @StateObject var userData = UserData()
 
-var body: some View {
-NavigationView {
-VStack {
-Text("Raw JSON Data:")
-ScrollView {
-Text(userData.users)
+  var body: some View {
+    NavigationView {
+      List(userData.users) { user in
+        Text(user.fullName)
+      }
+      .navigationTitle("Random Users")
+    }
+  }
 }
-}
-.padding()
-.navigationTitle("Random Users")
-}
-}
-}
+    
+    
+    #Preview {
+        UsersView()
+    }
 
-
-
-#Preview {
-    UsersView()
-}
